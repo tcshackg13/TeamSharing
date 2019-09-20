@@ -1,0 +1,4 @@
+sudo yum install software-properties-common
+sudo yum install epel-release
+sudo yum install ansible
+ansible --version
