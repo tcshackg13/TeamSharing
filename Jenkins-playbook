@@ -1,0 +1,36 @@
+---
+- hosts: jenkins
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install packages and dependencies
+      yum: name={{ item }} update_cache=yes state=present
+      with_items:
+        - openjdk-8-jdk
+        - libfontconfig
+        - libffi-dev
+        - libncurses5-dev
+    - name: Jenkins Repository Install
+      yum_repository:
+        name: jenkins
+        state: present
+        description: Jenkins Yum Repo
+        baseurl: http://pkg.jenkins.io/redhat
+        gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+        gpgcheck: yes
+        enabled: yes
+    - name: Jenkins Install
+      yum :
+        name: jenkins
+        update_cache: yes
+        state: present
+    - name: Start the server
+      service:
+        name: jenkins
+        state: started
+    - name: Wait for port 8080 to become open on the host, don't start checking for 10 seconds
+      wait_for:
+        port: 8080
+        delay: 10
+    - name: Get Admin Password
+      command: cat /var/lib/jenkins/secrets/initialAdminPassword
