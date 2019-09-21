@@ -19,3 +19,4 @@
     delay: 10
 - name: Get Admin Password
   command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  ignore_errors: True

@@ -1,0 +1,19 @@
+---
+- name: Download Sonarscanner
+  get_url:
+    url: "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.0.0.1744-linux.zip"
+    dest: "/opt/sonar-scanner-cli-4.0.0.1744-linux.zip"
+- name: Create and Set Permissions
+  command: sudo mkdir /opt/sonar_scanner
+  ignore_errors: True    
+- name: Create and Set Permissions
+  command: sudo chmod -R 777 /opt/sonar_scanner/   
+- name: Extract SonarQube
+  unarchive:
+    src: "/opt/sonar-scanner-cli-4.0.0.1744-linux.zip"
+    dest: "/opt/sonar_scanner"
+    copy: no
+- name: Ensure the server config is applied
+  lineinfile:
+    path: /opt/sonar_scanner/sonar-scanner-4.0.0.1744-linux/conf/sonar-scanner.properties
+    line: sonar.host.url=http://10.138.0.3:9000 
