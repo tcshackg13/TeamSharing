@@ -1,0 +1,4 @@
+---
+# tasks file for /home/sarath_kunala/project-work/TeamSharing/jenkins
+- import_tasks: install.yml
+- import_tasks: service.yml

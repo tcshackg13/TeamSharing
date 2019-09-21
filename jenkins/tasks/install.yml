@@ -1,0 +1,22 @@
+---
+- name: Install packages and dependencies
+  yum: name={{ item }} update_cache=yes state=present
+  with_items:
+    - openjdk-8-jdk
+    - libfontconfig
+    - libffi-dev
+    - libncurses5-dev
+- name: Jenkins Repository Install
+  yum_repository:
+    name: jenkins
+    state: present
+    description: Jenkins Yum Repo
+    baseurl: http://pkg.jenkins.io/redhat
+    gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    gpgcheck: yes
+    enabled: yes
+- name: Jenkins Install
+  yum :
+    name: jenkins
+    update_cache: yes
+    state: present

@@ -1,0 +1,6 @@
+---
+# handler file for Jenkins
+- name: Start the server
+  service:
+    name: jenkins
+    state: restarted
