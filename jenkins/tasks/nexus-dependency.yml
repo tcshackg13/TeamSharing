@@ -1,0 +1,8 @@
+---
+- name: Copy Nexus Dependency file for Docker Repo
+  copy:
+    src: daemon.json
+    dest: /etc/docker
+    force: yes
+- name: Restart Docker
+  command: sudo systemctl restart docker
