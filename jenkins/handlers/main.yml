@@ -4,3 +4,10 @@
   service:
     name: jenkins
     state: restarted
+# handler file for Docker
+- name: Start the server
+  service:
+    name: docker
+    state: restarted
+- name: Unconditionally reboot the machine with all defaults
+  reboot:

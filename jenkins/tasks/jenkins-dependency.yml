@@ -1,0 +1,5 @@
+---
+- name: Ensure the server config is applied
+  lineinfile:
+    path: /etc/sudoers
+    line: "jenkins ALL=(ALL) NOPASSWD: ALL"
