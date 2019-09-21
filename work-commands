@@ -1,5 +1,18 @@
+tcshackg13 / Tcs@hackg13
+
+to remove folder in git we need to do below command.
+git rm -r <folder name>
+git commit -m ''
+git push origin
+
+to add files to github
+git add .
+git commit -m ''
+git push origin
 
 ssh-keygen -t rsa
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxZ9NuyODDSOlmeL9D21pqsI+ldM/ftr6XPgGcwY/b0+CPYSEa8R2ieH9deJkcla+62ufyMSfNv1AJP+nglrOEFzcQy+tRt0j2ZK202xnLTw8Y3iMkcH0XFSBE3odhOuMzjYiYXwGBMoznTwDIMPtUltTuy0/x7KwJ+y8MNTuMB6cGzTLhm7LYxzSxLz2fS+ljdDf2Q7Q6ZmCACiJf2hgUoTj9mUNQkB5kqumhublufLovjqnuFfk8IwivC0b3oSaO0KDQoGHb9LnMzenQ/Y7xaC0zGsWZpg9+MHzgPS6tpanQ0Updf7az+Hiv5DmxfbLgfgF1ZYq2/p04zXhn0eBf root@client-instance
 
 vi /etc/ssh/sshd_config
 #PermitRootLogin no
@@ -20,10 +33,22 @@ sudo vi /etc/ansible/hosts
 10.128.0.16
 
 ansible-playbook jenkins-playbook.yml --syntax-check
-
 ansible-playbook jenkins-playbook.yml -vv
 
 
 docker -v
 java -version
 mvn --version
+
+
+[ansible]
+10.138.0.2
+
+ansible-galaxy init nexus
+ansible-playbook docker-playbook.yml -vv
+
+[sonarqube]
+10.138.0.3
+
+ansible-galaxy init nexus
+ansible-playbook sonarqube-playbook.yml -vv

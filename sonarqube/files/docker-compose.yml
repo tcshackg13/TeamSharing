@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  sonarqube:
+    image: sonarqube
+    volumes:
+      - sonar-data:/opt/sonarqube
+    ports:
+      - "9000:9000"
+  
+volumes:
+  sonar-data:
