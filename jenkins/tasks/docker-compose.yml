@@ -1,0 +1,9 @@
+---
+- name: Install Docker Compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+    dest: "{{ docker_compose_path }}"
+    mode: 0755
+- name: Create link to usr/bin
+  command: ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  ignore_errors: True

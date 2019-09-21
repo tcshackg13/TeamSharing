@@ -2,10 +2,9 @@
 - name: Install packages and dependencies
   yum: name={{ item }} update_cache=yes state=present
   with_items:
-    - openjdk-8-jdk
-    - libfontconfig
-    - libffi-dev
-    - libncurses5-dev
+    - java-1.8.0-openjdk-devel
+    - maven
+    - docker
 - name: Jenkins Repository Install
   yum_repository:
     name: jenkins
