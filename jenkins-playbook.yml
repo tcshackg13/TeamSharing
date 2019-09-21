@@ -3,4 +3,6 @@
   become: yes
   become_method: sudo
   roles:
+    - dependencies
+    - docker
     - jenkins

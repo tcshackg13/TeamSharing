@@ -2,11 +2,7 @@
 - name: Install packages and dependencies
   yum: name={{ item }} update_cache=yes state=present
   with_items:
-    - java-1.8.0-openjdk-devel
     - maven
-    - docker
-    - git
-    - unzip
 - name: Jenkins Repository Install
   yum_repository:
     name: jenkins

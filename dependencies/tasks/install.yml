@@ -1,0 +1,9 @@
+---
+- name: Install packages and dependencies
+  yum: name={{ item }} update_cache=yes state=present
+  with_items:
+    - java-1.8.0-openjdk-devel
+    - python
+    - git
+    - unzip
+    - wget

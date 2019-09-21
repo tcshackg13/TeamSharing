@@ -1,0 +1,3 @@
+---
+# tasks file for dependencies
+- import_tasks: install.yml

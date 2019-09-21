@@ -1,6 +1,8 @@
 ---
-- hosts: nexus 
+- hosts: nexus
   become: yes
   become_method: sudo
   roles:
+    - dependencies
+    - docker
     - nexus
