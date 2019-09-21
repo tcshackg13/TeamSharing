@@ -12,7 +12,7 @@
 - name: Make directory accessible by Docker
   command: chown -R 200 /etc/sonarqube-data
 - name: Copy Docker Compose File to Work
-  copy: 
+  copy:
     src: docker-compose.yml
     dest: /opt/work
     force: no

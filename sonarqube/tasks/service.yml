@@ -1,9 +1,0 @@
----
-- name: Start Docker
-  service:
-    name: docker
-    state: started
-    enabled: yes
-- name: Create Docker Group
-  command: groupadd docker
-  ignore_errors: True
