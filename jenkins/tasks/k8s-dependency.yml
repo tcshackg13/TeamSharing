@@ -1,0 +1,27 @@
+---
+- name: Kubectl Repository Install
+  yum_repository:
+    name: Kubernetes
+    state: present
+    description: Kubernetes Yum Repo
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    gpgcheck: yes
+    enabled: yes
+    repo_gpgcheck: yes
+- name: Kubectl Install
+  yum :
+    name: kubectl
+    update_cache: yes
+    state: present
+- name: Add package to Kubernetes list
+  command: "{{ k8s_cluster_config }}"
+  become: yes
+  become_method: sudo
+  become_user: jenkins
+- name: Add a kubernetes secret for private registryt
+  command: "{{ k8s_registry_secret }}"
+  ignore_errors: True
+  become: yes
+  become_method: sudo
+  become_user: jenkins

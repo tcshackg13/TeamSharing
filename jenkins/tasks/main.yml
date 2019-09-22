@@ -1,7 +1,8 @@
 ---
-# tasks file for /home/sarath_kunala/project-work/TeamSharing/jenkins
+# tasks file for jenkins
 - import_tasks: install.yml
 - import_tasks: service.yml
 - import_tasks: sonarscanner.yml
 - import_tasks: nexus-dependency.yml
 - import_tasks: jenkins-dependency.yml
+- import_tasks: k8s-dependency.yml
