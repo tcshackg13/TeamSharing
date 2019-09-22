@@ -6,3 +6,4 @@
 - import_tasks: sonarscanner.yml
 - import_tasks: nexus-dependency.yml
 - import_tasks: jenkins-dependency.yml
+- import_tasks: k8s-dependency.yml

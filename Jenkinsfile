@@ -46,7 +46,7 @@ pipeline {
         	sudo docker tag  10.138.0.2:8082/eureka-server-svc:latest  10.138.0.2:8083/eureka-server-svc:latest
         	sudo docker push 10.138.0.2:8083/eureka-server-svc:latest
         
-        	CONTAINER=$(sudo docker ps -a | grep practice_proj | awk '{print $1}')
+        	CONTAINER=$(sudo docker ps -a | grep eureka | awk '{print $1}')
         	echo "Found container ID" $CONTAINER 
         	sudo docker rm -f $CONTAINER || true
         
@@ -56,5 +56,20 @@ pipeline {
         	sudo docker run -itd -p 8761:8761 10.138.0.2:8083/eureka-server-svc:latest'''
         	}
         }
+    stage('App Deployment to Kubernetes Cluster') {
+        steps {
+            sh label: 'Deploy Application to Kubernetes Cluster', 
+            script: '''
+            
+            cd eureka-server
+            kubectl delete deployment eureka-micro-svc || true
+            kubectl apply -f k8s-deployment.yaml
+            kubectl apply -f k8s-service.yaml
+            sleep 200
+            kubectl get services
+            
+            '''
+        }
+    }
   }
 }
