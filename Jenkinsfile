@@ -37,14 +37,14 @@ pipeline {
         	echo "*******Initiate Docker Build*******"
         	echo ""
 
-        	sudo docker login -u jenkin -p jenkins 10.128.0.2:8082
-        	sudo docker login -u jenkin -p jenkins 10.128.0.2:8083
+        	sudo docker login -u jenkin -p jenkins 10.128.0.4:8082
+        	sudo docker login -u jenkin -p jenkins 10.128.0.4:8083
 
         	cd eureka-server
 
-        	sudo docker build -t 10.128.0.2:8082/eureka-server-svc:latest .
-        	sudo docker tag  10.128.0.2:8082/eureka-server-svc:latest  10.128.0.2:8083/eureka-server-svc:latest
-        	sudo docker push 10.128.0.2:8083/eureka-server-svc:latest
+        	sudo docker build -t 10.128.0.4:8082/eureka-server-svc:latest .
+        	sudo docker tag  10.128.0.4:8082/eureka-server-svc:latest  10.128.0.4:8083/eureka-server-svc:latest
+        	sudo docker push 10.128.0.4:8083/eureka-server-svc:latest
 
         	CONTAINER=$(sudo docker ps -a | grep practice_proj | awk '{print $1}')
         	echo "Found container ID" $CONTAINER
@@ -53,7 +53,7 @@ pipeline {
         	echo "*******Run Container*******"
         	echo ""
 
-        	sudo docker run -itd -p 8761:8761 10.128.0.2:8083/eureka-server-svc:latest'''
+        	sudo docker run -itd -p 8761:8761 10.128.0.4:8083/eureka-server-svc:latest'''
         	}
         }
   }
