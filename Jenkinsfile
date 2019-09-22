@@ -37,8 +37,8 @@ pipeline {
         	echo "*******Initiate Docker Build*******"
         	echo ""
 
-        	sudo docker login -u jenkin -p jenkins 10.128.0.4:8082
-        	sudo docker login -u jenkin -p jenkins 10.128.0.4:8083
+        	sudo docker login -u admin -p tcshack13g 10.128.0.4:8082
+        	sudo docker login -u admin -p tcshack13g 10.128.0.4:8083
 
         	cd eureka-server
 
