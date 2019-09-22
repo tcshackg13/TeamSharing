@@ -16,4 +16,4 @@
 - name: Ensure the server config is applied
   lineinfile:
     path: /opt/sonar_scanner/sonar-scanner-4.0.0.1744-linux/conf/sonar-scanner.properties
-    line: sonar.host.url=http://10.128.0.3:9000
+    line: "{{ sonarqube_host }}"
