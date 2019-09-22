@@ -1,4 +1,4 @@
 ---
-sonarqube_host: "sonar.host.url=http://10.128.0.3:9000"
-k8s_cluster_config: "gcloud container clusters get-credentials devops-practice --zone us-east1-b --project devops-practice-252822"
-k8s_registry_secret: "kubectl create secret docker-registry regsecret --docker-server=10.138.0.2:8082 --docker-username=jenkin --docker-password=jenkins"
+sonarqube_host: "sonar.host.url=http://10.142.0.4:9000"
+k8s_cluster_config: "gcloud container clusters get-credentials g13-k8s-cluster --zone us-west1-a --project g13-devops-project"
+k8s_registry_secret: "kubectl create secret docker-registry regsecret --docker-server=10.128.0.6:8082 --docker-username=jenkins --docker-password=jenkins"

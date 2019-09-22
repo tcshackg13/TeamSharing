@@ -1,0 +1,5 @@
+---
+# master playbook to install all software required for this project
+- import_playbook: jenkins-playbook.yml
+- import_playbook: nexus-playbook.yml
+- import_playbook: sonar-playbook.yml
